@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rogue Delay</title>
+</head>
+<body>
+    <video id="video" autoplay="true">
+        <source src="video/Rogue_Popup_Pink.webm" type="video/webm">
+    </video>
+
+    <script defer>
+        let video = document.getElementById("video");
+
+        function playVideo() {
+            video.play();
+            
+            setTimeout(playVideo, 60000 * 15);
+        }
+
+        playVideo();
+    </script>
+</body>
+</html>
