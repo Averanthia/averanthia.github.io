@@ -6,13 +6,10 @@
     <title>Rogue Delay</title>
 </head>
 <body>
-    <video id="video" src="video/Rogue_Popup_Pink.webm" autoplay="true"></video>
+    <video id="video" src="video/Rogue_Popup_Pink.webm" muted="true" autoplay="true"></video>
 
     <script defer>
         let video = document.getElementById("video");
-
-        video.play();
-
 
         function playVideo() {
             video.play();
@@ -20,7 +17,7 @@
             setTimeout(playVideo, 60000 * 15);
         }
 
-        setTimeout(playVideo, 60000 * 15);
+        playVideo();
     </script>
 </body>
 </html>
