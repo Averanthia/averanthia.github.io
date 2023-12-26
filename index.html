@@ -11,13 +11,14 @@
     <script defer>
         let video = document.getElementById("video");
 
-        function playVideo() {
-            video.play();
-            
-            setTimeout(playVideo, 60000 * 15);
-        }
+        video.addEventListener("ended", playVideo, false);
 
-        playVideo();
+        function playVideo() {
+            console.log(new Date().getMinutes());
+            setTimeout(() => {
+                video.play();
+            }, 60000 * 15);
+        }
     </script>
 </body>
 </html>
