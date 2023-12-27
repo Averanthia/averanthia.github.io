@@ -6,18 +6,42 @@
     <title>Rogue Delay</title>
 </head>
 <body>
-    <video id="video" src="video/Rogue_Popup_Pink.webm" muted="true" autoplay="true"></video>
+    <video id="rogue" src="video/Rogue_Popup_Pink.webm" muted="true" autoplay="true"></video>
+    <video id="sexy" style="display: none;" src="video/Sexy_Popup_Pink.webm" muted="true"></video>
 
     <script defer>
-        let video = document.getElementById("video");
 
-        video.addEventListener("ended", playVideo, false);
+        var rogue_video = document.getElementById("rogue");
+        var sexy_video = document.getElementById("sexy");
 
-        function playVideo() {
+        rogue_video.addEventListener("ended", playRogueVideo, false);
+
+        function playRogueVideo() {
+            rogue_video.style.display = "none";
+            rogue_video.removeEventListener("ended", playRogueVideo, false);
+
+            sexy_video.style.display = "block";
+
             console.log(new Date().getMinutes());
+
             setTimeout(() => {
-                video.play();
-            }, 60000 * 15);
+                sexy_video.addEventListener("ended", playSexyVideo, false);
+                sexy_video.play();
+            }, 60000 * 7.5);
+        }
+
+        function playSexyVideo() {
+            sexy_video.style.display = "none";
+            sexy_video.removeEventListener('ended', playSexyVideo, false);
+
+            rogue_video.style.display = "block";
+
+            console.log(new Date().getMinutes());
+
+            setTimeout(() => {
+                rogue_video.play();
+                rogue_video.addEventListener("ended", playRogueVideo, false);
+            }, 60000 * 7.5);
         }
     </script>
 </body>
